@@ -12,7 +12,17 @@
 */
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@registerForm');
+Route::get('/{referal}', 'HomeController@registerFormByReferal');
+
+Route::post('/register', 'HomeController@register');
+
+Route::get('/confirm', 'HomeController@beforeConfirm');
+Route::get('/confirm/{conflink}', 'HomeController@confirmEmailForm');
+Route::get('/send-mail', 'HomeController@sendConfirmMail');
+
+
+/*
 Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
@@ -45,3 +55,4 @@ Route::group([
 		Route::resource('/users', 'UsersController');
 		Route::resource('/posts', 'PostsController');
 });
+*/
