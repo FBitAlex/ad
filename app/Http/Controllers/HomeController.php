@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Category;
-use App\Mail\SendMail;
+use App\Project;
+
+use App\Mail\RegisterMail;
+use App\Mail\OpenCourseMail;
+use App\Mail\OneMoreReferalMail;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller {
@@ -15,7 +20,6 @@ class HomeController extends Controller {
 		return view( 'pages.register', compact('home_content', 'home_video', 'referal') );
 	}
 
-
 	public function register(Request $request) {
 		$this->validate($request, [
 			'name' 		=> 'required',
@@ -25,14 +29,39 @@ class HomeController extends Controller {
 		$user = User::add($request->all());
 
 		// send mail
-		//$this->sendConfirmMail( $user );
-		\Mail::to($user)->send(new SendMail($user));
+		\Mail::to($user)->send(new RegisterMail($user));
 		\Notify::success('На вашу почту отправлено письмо с подтверждением. Проверьте почту.');
+
+		// check cnt invited
+		if ( $request->referal != null && User::getUserByReferal( $request->referal ) != null ) { // if enouth, then send letter about open course
+			
+			$user = User::getUserByReferal( $request->referal );
+			$params = Project::getProjectParams( 'astro' );
+			$currentInvited = User::getCountReferal( $request->referal );
+
+
+
+			if  ( $params->need_cnt_invite <= $currentInvited ) {
+				if (!$user->is_send) {
+					\Mail::to($user)->send(new OpenCourseMail( $user ));
+					$user->is_send = 1;
+					$user->save();
+				}
+
+			} else if (!$user->is_send) { // if not enouth, then send letter about one more frend invite
+				\Mail::to($user)->send(new OneMoreReferalMail( $currentInvited,  $params->need_cnt_invite ));
+			}
+		}
+			
 		return $this->registerForm( $request->get('referal') );
+		//return redirect('/'.$request->get('referal'));
+		//return redirect()->route('startPage', ['referal' => $request->get('referal')]);
 	}
 
+	// public function checkCntInvited( $referal ) {
+	// }
 	// public function sendConfirmMail( $user ) {
-	// 	\Mail::to($user)->send(new SendMail($user));
+	// 	\Mail::to($user)->send(new RegisterMail($user));
 	// 	//return view( 'pages.before_confirm', compact('user') );
 	// }
 
@@ -48,7 +77,14 @@ class HomeController extends Controller {
 
 		$user = User::getUserByConfirmLink( $conflink );
 		$count_invite = User::getCountReferalUser( $conflink );
-		return view( 'pages.confirm', compact('user', 'count_invite') );
+		
+		$params = Project::getProjectParams( 'astro' );
+
+		if ( $count_invite < $params->need_cnt_invite ) {
+			return view( 'pages.confirm', compact('user', 'count_invite') );
+		} else {
+			return view( 'pages.course', compact('params') );
+		}
 	}
 
 	// public function confirmEmail( $conflink ) {
