@@ -9,16 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 	
-	public function registerForm() {
-		$home_content 	= "<h1>home content</h1>";
-		$home_video 	= "<h1>home video</h1>";
-		$referal		= null;
-		return view( 'pages.register', compact('home_content', 'home_video', 'referal') );
-	}
-
-
-	public function registerFormByReferal( $referal ) {
-		$parent_user = User::getUserByReferal($referal);
+	public static function registerForm( $referal = null ) {
 		$home_content 	= "<h1>home content</h1>";
 		$home_video 	= "<h1>home video</h1>";
 		return view( 'pages.register', compact('home_content', 'home_video', 'referal') );
@@ -36,7 +27,8 @@ class HomeController extends Controller {
 		// send mail
 		//$this->sendConfirmMail( $user );
 		\Mail::to($user)->send(new SendMail($user));
-		return view( 'pages.confirm', compact('user') );
+		\Notify::success('На вашу почту отправлено письмо с подтверждением. Проверьте почту.');
+		return $this->registerForm( $request->get('referal') );
 	}
 
 	// public function sendConfirmMail( $user ) {
@@ -44,26 +36,28 @@ class HomeController extends Controller {
 	// 	//return view( 'pages.before_confirm', compact('user') );
 	// }
 
-	public function beforeConfirm(  ) {
-		return view('pages.before_confirm');
-	}
+	// public function beforeConfirm(  ) {
+	// 	return view('pages.before_confirm');
+	// }
 	
-	public function confirm( $user ) {
-		dd($user);
-		if ( $conflink != null ) {
-			$count_invite = User::getCountReferalUser( $conflink );
-			return view( 'pages.confirm', compact('count_invite') );
+	public function confirmEmailPage( $conflink ) {
+		
+		if ( $conflink == null ) {
+			return redirect('/');	
 		}
-		return redirect('/');
+
+		$user = User::getUserByConfirmLink( $conflink );
+		$count_invite = User::getCountReferalUser( $conflink );
+		return view( 'pages.confirm', compact('user', 'count_invite') );
 	}
 
-	public function confirmEmail( $conflink ) {
-		if ( $conflink != null ) {
-			$count_invite = User::getCountReferalUser( $conflink );
-			return view( 'pages.confirm', compact('count_invite') );
-		}
-		return redirect('/');
-	}
+	// public function confirmEmail( $conflink ) {
+	// 	if ( $conflink != null ) {
+	// 		$count_invite = User::getCountReferalUser( $conflink );
+	// 		return view( 'pages.confirm', compact('count_invite', 'conflink') );
+	// 	}
+	// 	return redirect('/');
+	// }
 
 /*
 	public function show( $slug ) {

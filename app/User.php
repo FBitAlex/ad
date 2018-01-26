@@ -35,7 +35,7 @@ class User extends Authenticatable {
         $user = new static;
         $user->fill( $fields );
         $user->self_referal = str_random(8);
-        $user->comfirm_link = str_random(16);
+        $user->confirm_link = str_random(16);
         if (self::getUserByReferal($fields['referal'])) {
             $user->parent_referal = $fields['referal'];
         }
@@ -48,10 +48,13 @@ class User extends Authenticatable {
         return self::where('self_referal', $referal)->count();
     }
 
-    public static function getCountReferalUser( $conflink ) {
-        $user = self::where('comfirm_link', $conflink)->first();
-        return self::where('parent_referal', $user->self_referal)->count();
+    public static function getUserByConfirmLink( $conflink ) {
+        return self::where('confirm_link', $conflink)->first();
     }
 
+    public static function getCountReferalUser( $conflink ) {
+        $user = self::where('confirm_link', $conflink)->first();
+        return self::where('parent_referal', $user->self_referal)->count();
+    }
 
 }

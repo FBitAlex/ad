@@ -12,13 +12,11 @@
 */
 
 
-Route::get('/', 'HomeController@registerForm');
-Route::get('/{referal}', 'HomeController@registerFormByReferal');
-
+//Route::get('/', 'HomeController@registerForm');
+Route::get('/{referal?}', 'HomeController@registerForm');
 Route::post('/register', 'HomeController@register');
-
-Route::get('/confirm', 'HomeController@beforeConfirm');
-Route::get('/confirm/{conflink}', 'HomeController@confirmEmailForm');
+// Route::get('/confirm', 'HomeController@beforeConfirm');
+Route::get('/confirm/{conflink}', 'HomeController@confirmEmailPage');
 Route::get('/send-mail', 'HomeController@sendConfirmMail');
 
 
