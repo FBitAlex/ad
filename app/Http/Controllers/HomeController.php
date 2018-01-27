@@ -39,8 +39,6 @@ class HomeController extends Controller {
 			$params = Project::getProjectParams( 'astro' );
 			$currentInvited = User::getCountReferal( $request->referal );
 
-
-
 			if  ( $params->need_cnt_invite <= $currentInvited ) {
 				if (!$user->is_send) {
 					\Mail::to($user)->send(new OpenCourseMail( $user ));
