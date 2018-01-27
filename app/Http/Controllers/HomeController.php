@@ -17,7 +17,7 @@ class HomeController extends Controller {
 	public static function registerForm( $referal = null ) {
 		$home_content 	= "<h1>home content</h1>";
 		$home_video 	= "<h1>home video</h1>";
-		return view( 'pages.register', compact('home_content', 'home_video', 'referal') );
+		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links') );
 	}
 
 	public function register(Request $request) {
@@ -79,11 +79,13 @@ class HomeController extends Controller {
 		$count_invite = User::getCountReferalUser( $conflink );
 		
 		$params = Project::getProjectParams( 'astro' );
-
+		
+		$share_links = \Share::load('http://www.google/com', 'Курс астрология')->services('facebook', 'vk', 'twitter');
+		
 		if ( $count_invite < $params->need_cnt_invite ) {
-			return view( 'pages.confirm', compact('user', 'count_invite') );
+			return view( 'pages.confirm', compact('user', 'count_invite', 'share_links') );
 		} else {
-			return view( 'pages.course', compact('params') );
+			return view( 'pages.course', compact('params', 'share_links') );
 		}
 	}
 

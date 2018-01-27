@@ -170,6 +170,7 @@ return [
         
         Collective\Html\HtmlServiceProvider::class,
         Andheiberg\Notify\NotifyServiceProvider::class,
+        Chencha\Share\ShareServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -233,6 +234,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         'Notify' => Andheiberg\Notify\Facades\Notify::class,
+        'Share' => Chencha\Share\ShareFacade::class,
     ],
 
 ];

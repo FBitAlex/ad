@@ -7,6 +7,7 @@
     "require": {
         "php": ">=7.0.0",
         "andheiberg/notify": "2.*",
+        "chencha/share": "^5.2",
         "cviebrock/eloquent-sluggable": "4.3",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",

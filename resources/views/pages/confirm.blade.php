@@ -17,6 +17,10 @@
 		
 		<div class="leave-comment col-md-5">
 			<h2>Вы пригласили <strong>{{$count_invite}}</strong> друзей из 6<h2>
+
+			@foreach ( $share_links as $key => $value )
+        		<br><a href="{{$value}}" class="share_link {{$key}}">{{$key}}</a>
+		    @endforeach
 		</div>
 
 	</div>
