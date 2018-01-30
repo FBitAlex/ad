@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 26 2018 г., 23:20
+-- Время создания: Янв 30 2018 г., 14:23
 -- Версия сервера: 5.7.16
 -- Версия PHP: 7.1.0
 
@@ -147,14 +147,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `self_referal`, `parent_referal`, `confirm_link`, `is_send`, `created_at`, `updated_at`) VALUES
-(23, 'alex', 'alex_d@ukr.net', '2sfnlXPW', NULL, 'WCgrYpSbySX4fndg', 1, '2018-01-26 08:19:27', '2018-01-26 18:14:42'),
+(23, 'alex', 'alex_d@ukr.net', '2sfnlXPW', NULL, 'WCgrYpSbySX4fndg', 1, '2018-01-26 08:19:27', '2018-01-30 09:06:51'),
 (24, 'john', 'alex_d@ukr.net1', 'kJAlkRWr', '2sfnlXPW', 'Qi4YHfE1rHmCVNCP', 0, '2018-01-26 08:20:21', '2018-01-26 08:20:21'),
 (25, 'ddd', 'alex_d@ukr.net33', 'qCiInD5w', '2sfnlXPW', 'j0STTHJPeRwSCWje', 0, '2018-01-26 08:21:01', '2018-01-26 08:21:01'),
 (27, '111', 'dav@argus.kharkov.uatert', 'hsRvZy8e', '2sfnlXPW', 'kGFjyhQmub66tmCF', 0, '2018-01-26 08:48:10', '2018-01-26 08:48:10'),
 (42, 'ddd', 'alex_d@ukr.net45646456', 'pZi2CfH2', '2sfnlXPW', 'z6SQY47ysL48AbhJ', 0, '2018-01-26 17:24:03', '2018-01-26 17:24:03'),
-(67, 'alex', 'alex_dk@ukr.netertghjh', 'FtaU4JLX', '2sfnlXPW', 'Cf0gTTCh3s9dYJJb', 0, '2018-01-26 18:13:55', '2018-01-26 18:13:55'),
-(68, 'ddd', 'sbecompany.uk@gmail.comrtyrty', 'IQITrU0S', '2sfnlXPW', '0TEUj2WMx0qMFO0z', 0, '2018-01-26 18:14:38', '2018-01-26 18:14:38'),
-(69, 'ddd', 'sbecompany.uk@gmail.com3454354353', 'U96Uhdt1', '2sfnlXPW', 'h3IKa1SjrJXUS9AX', 0, '2018-01-26 18:15:26', '2018-01-26 18:15:26');
+(43, 'test user', 'test@test.test', 'JxLX6iFJ', '2sfnlXPW', 'mTI2lnnHFJiXFEIn', 0, '2018-01-30 09:03:07', '2018-01-30 09:03:07'),
+(44, 'alex', 'alex_d@ukr.net546546546', 'FFzMwiXR', '2sfnlXPW', 'CGlDSOIi5dTSdcqw', 0, '2018-01-30 09:04:55', '2018-01-30 09:04:55'),
+(46, 'ddd', 'alex_dk@ukr.net456456546', '9FGCmf7O', '2sfnlXPW', 'BzI98wyLru8UKv3n', 0, '2018-01-30 09:09:55', '2018-01-30 09:09:55');
 
 --
 -- Индексы сохранённых таблиц
@@ -224,7 +224,7 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
