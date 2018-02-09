@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 	
-	public static function registerForm( $referal = null ) {
+	public static function registerForm( $is_reg, $referal = null ) {
 		$home_content 	= "<h1>home content</h1>";
 		$home_video 	= "<h1>home video</h1>";
-		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links') );
+		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links', 'is_reg') );
 	}
 
 	public function register(Request $request) {
@@ -27,6 +27,7 @@ class HomeController extends Controller {
 		]);
 
 		$user = User::add($request->all());
+		$is_reg = 1;
 
 		// send mail
 		\Mail::to($user)->send(new RegisterMail($user));
@@ -51,7 +52,7 @@ class HomeController extends Controller {
 			}
 		}
 			
-		return $this->registerForm( $request->get('referal') );
+		return $this->registerForm( $is_reg, $request->get('referal') );
 		//return redirect('/'.$request->get('referal'));
 		//return redirect()->route('startPage', ['referal' => $request->get('referal')]);
 	}
