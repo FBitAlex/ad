@@ -14,9 +14,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 	
-	public static function registerForm( $is_reg, $referal = null ) {
-		$home_content 	= "<h1>home content</h1>";
-		$home_video 	= "<h1>home video</h1>";
+	public static function registerForm( $referal = null ) {
+		$is_reg = 0;
 		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links', 'is_reg') );
 	}
 
@@ -34,9 +33,9 @@ class HomeController extends Controller {
 		\Notify::success('На вашу почту отправлено письмо с подтверждением. Проверьте почту.');
 
 		// check cnt invited
-		if ( $request->referal != null && User::getUserByReferal( $request->referal ) != null ) { // if enouth, then send letter about open course
+		$user = User::getUserByReferal( $request->referal );
+		if ( $request->referal != null && $user != null ) { // if enouth, then send letter about open course
 			
-			$user = User::getUserByReferal( $request->referal );
 			$params = Project::getProjectParams( 'astro' );
 			$currentInvited = User::getCountReferal( $request->referal );
 
@@ -52,7 +51,11 @@ class HomeController extends Controller {
 			}
 		}
 			
-		return $this->registerForm( $is_reg, $request->get('referal') );
+		//return $this->registerForm( $is_reg, $request->get('referal') );
+		return view( 'pages.register', [
+			'is_reg' 	=> $is_reg,
+			'referal' 	=> $request->get('referal') 
+		]);
 		//return redirect('/'.$request->get('referal'));
 		//return redirect()->route('startPage', ['referal' => $request->get('referal')]);
 	}

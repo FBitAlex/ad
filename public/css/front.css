@@ -20,3 +20,8 @@ body {
 	border: 1px solid #F0F0F0;
 	box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 }
+
+.share-link {
+	margin: 4px 0;
+	display: block;
+}

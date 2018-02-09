@@ -46,7 +46,8 @@
 					<h1>КОМПЛЕКТ №1 -БЕСПЛАТНЫЕ МАСТЕР-КЛАССЫ ПО ВЕДИЧЕСКОЙ АСТРОЛОГИИ ОТ ИКСА</h1>
 					<ol>
 						<li>Закрытые мастер-классы от Василия Тушкина в ИКСА (2 темы)</li>
-						<li>Практика разбора натальных карт Специалистов 3. Кураторский созвон по теме Раху-Кету</li>
+						<li>Практика разбора натальных карт Специалистов 3.</li>
+						<li>Кураторский созвон по теме Раху-Кету</li>
 					</ol>
 					<h4>Формат курса — Видео-запись</h4>
 				</div>
@@ -61,7 +62,7 @@
 				<div class="base-content">
 					<h2>Что внутри?</h2>
 					<h4>Посмотрите видео, чтобы узнать</h4>
-					{!! $home_video !!}
+					<h4>Блок с Видео</h4>
 				</div>
 			</div>
 			
@@ -90,7 +91,7 @@
 						</div>
 						<input type="hidden" name="referal" value="{{$referal}}">
 
-						<button type="submit" class="btn send-btn">Получить (за прилашение 4 друзей)</button>
+						<button type="submit" class="btn btn-success">Получить (за прилашение 4 друзей)</button>
 
 					</form>
 				</div>
@@ -124,7 +125,7 @@
 
 		  </div>
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+			<button type="button" class="btn btn-info" data-dismiss="modal">Закрыть</button>
 		  </div>
 		</div>
 	  </div>
