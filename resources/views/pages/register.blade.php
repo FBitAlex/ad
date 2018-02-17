@@ -1,8 +1,12 @@
 @extends('layout')
 
 @section('content')
-<div class="main-content">
+
+<!-- COUNTDOWN -->
+<div id="reg-node1" class="ad-fw-block">
+<div id="reg-node1-inner">
 	<div class="container">
+		<div class="ad-logo"></div>
 	
 <!-- 		<div class="row">
 			@if (Notify::all())
@@ -38,10 +42,10 @@
 			@endif
 		</div> -->
 
-		<div class="row">
+
 
 			<!-- info block -->
-			<div class="col-12 base-block">
+<!-- 			<div class="col-12 base-block">
 				<div class="base-content">
 					<h1>КОМПЛЕКТ №1 -БЕСПЛАТНЫЕ МАСТЕР-КЛАССЫ ПО ВЕДИЧЕСКОЙ АСТРОЛОГИИ ОТ ИКСА</h1>
 					<ol>
@@ -51,23 +55,189 @@
 					</ol>
 					<h4>Формат курса — Видео-запись</h4>
 				</div>
-			</div>  
+			</div>   -->
 
-		</div>
 
+
+
+		<!-- VIDEO and FORM -->
 		<div class="row">
-
 			<!-- video block -->
-			<div class="col-12 col-md-7 base-block">
-				<div class="base-content">
-					<h2>Что внутри?</h2>
-					<h4>Посмотрите видео, чтобы узнать</h4>
-					<h4>Блок с Видео</h4>
+			<div class="col-12 col-lg-7">
+				<div class="video-block">
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/KRj2zz5_828?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				</div>
 			</div>
-			
+
 			<!-- register form block -->
-			<div class="col-12 col-md-5 base-block">
+			<div class="col-12 col-lg-5">
+				@if( session('status') )
+					<div class="alert alert-danger">
+						{{session('status')}}
+					</div>
+				@endif
+				
+				@include('admin.errors')
+
+				<form class="" role="form" method="post" action="/register">
+					{{csrf_field()}}
+
+					<div class="form-group">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Ваше Имя">
+					</div>
+
+					<div class="form-group">
+						<input type="text" class="form-control" id="email" name="email" placeholder="E-mail адрес">
+					</div>
+					<input type="hidden" name="referal" value="{{$referal}}">
+
+					<button type="submit" class="ad-btn full-width">Получить (за прилашение 4 друзей)</button>
+
+				</form>
+
+				<div class="page-title">
+					До конца раздачи осталось:
+				</div>
+
+			<!-- COUNTDOWN -->
+			<div id="countdown" class="bodycontainer clearfix big" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
+				<ul id="countscript">
+					<li class="cd-group">
+						<div class="top-line">
+							<div class="days"></div>
+							<div class="label">ДНЕЙ</div>	
+						</div>
+						<span class="separator">:</span>
+					</li>
+
+					<li class="cd-group">
+						<div class="top-line">
+							<div class="hours"></div>
+							<div class="label">ЧАСОВ</div>
+						</div>
+						<span class="separator">:</span>
+					</li>
+
+					<li class="cd-group">
+						<div class="top-line">
+							<div class="minutes"></div>
+							<div class="label">МИНУТ</div>
+						</div>
+						<span class="separator">:</span>
+					</li>
+
+					<li class="cd-group">
+						<div class="top-line">
+							<div class="seconds"></div>
+							<div class="label">СЕНКУНД</div>
+						</div>
+						<!-- <span class="separator" style="opacity:0;">:</span> -->
+					</li>
+				</ul>
+			</div> <!-- / COUNTDOWN -->
+
+		</div> <!-- / .row -->
+
+	</div> <!-- / .container -->
+</div> <!-- / #reg-node1-inner -->
+</div> <!-- / #reg-node1 -->
+
+
+
+<!-- CUPS -->
+<div id="reg-node2" class="ad-fw-block">
+<div id="reg-node2-inner">
+	<div class="container">
+		<div class="row">
+
+			<div class="col col-md-4">
+				<div class="cup-pic pic-1"></div>
+			</div>
+			<div class="col col-md-4">
+				<div class="cup-pic pic-2"></div>
+			</div>
+			<div class="col col-md-4">
+				<div class="cup-pic pic-3"></div>
+			</div>
+
+	    </div>  <!-- / .row -->
+	</div> <!-- / .container -->
+</div> <!-- / #reg-node2-inner -->
+</div> <!-- / #reg-node2 -->
+
+
+<!-- TESTIMONIALS -->
+<div id="reg-node3" class="ad-fw-block">
+<div id="reg-node3-inner">
+	
+	<div class="container">
+	    <div class="row">
+
+			<div class="col col-md-10">
+
+				<div id="testimonial-slider" class ="owl-carousel">
+					<div class="testimonial">
+						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
+						<div class="pic">
+							<img src="" alt="">
+						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
+					</div>
+
+					<div class="testimonial">
+						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
+						<div class="pic">
+							<img src="" alt="">
+						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
+					</div>
+					<div class="testimonial">
+						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
+						<div class="pic">
+							<img src="" alt="">
+						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
+					</div>
+					<div class="testimonial">
+						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
+						<div class="pic">
+							<img src="" alt="">
+						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
+					</div>
+					<div class="testimonial">
+						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
+						<div class="pic">
+							<img src="" alt="">
+						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
+					</div>
+					<div class="testimonial">
+						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
+						<div class="pic">
+							<img src="" alt="">
+						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
+					</div>
+					<div class="testimonial">
+						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
+						<div class="pic">
+							<img src="" alt="">
+						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
+					</div>
+	            </div>
+
+	        </div>
+
+	    </div>  <!-- / .row -->
+	</div> <!-- / .container -->
+
+</div> <!-- / #reg-node3-inner -->
+</div> <!-- / #reg-node3 -->
+
+
+<!-- INLINE FORM -->
+<div id="reg-node2" class="ad-fw-block">
+<div id="reg-node2-inner">
+	<div class="container">
+		<div class="row">
+
+			<!-- register form block -->
+			<div class="col-12 col-md-12">
 				<div class="base-content">
 					@if( session('status') )
 						<div class="alert alert-danger">
@@ -75,32 +245,66 @@
 						</div>
 					@endif
 					
-					<h3 class="text-uppercase">Login</h3>
 					@include('admin.errors')
-					<br>
 
 					<form class="" role="form" method="post" action="/register">
 						{{csrf_field()}}
 
-						<div class="form-group">
-							<input type="text" class="form-control" id="name" name="name" placeholder="Ваше Имя">
+						<div class="form-group row">
+							<div class="col-12 col-md-4">
+								<input type="text" class="form-control" id="name" name="name" placeholder="Ваше Имя">
+							</div>
+							<div class="col-12 col-md-4">
+								<input type="text" class="form-control" id="email" name="email" placeholder="E-mail адрес">
+							</div>
+							<div class="col-12 col-md-4">
+								<input type="hidden" name="referal" value="{{$referal}}">
+								<button type="submit" class="form-control ad-btn">Получить</button>
+							</div>
 						</div>
-
-						<div class="form-group">
-							<input type="text" class="form-control" id="email" name="email" placeholder="E-mail адрес">
-						</div>
-						<input type="hidden" name="referal" value="{{$referal}}">
-
-						<button type="submit" class="btn btn-success">Получить (за прилашение 4 друзей)</button>
-
 					</form>
+
 				</div>
 			</div>
-		
-		</div> <!-- / row -->
 
-	</div>
-</div>
+	    </div>  <!-- / .row -->
+	</div> <!-- / .container -->
+</div> <!-- / #reg-node2-inner -->
+</div> <!-- / #reg-node2 -->
+
+
+
+<!-- FOOTER -->
+<div id="reg-node4" class="ad-fw-block">
+<div id="reg-node4-inner">
+	<div class="container">
+		<div class="row">
+
+	        <div class="col col-md-4">
+				<p class="footer-title">Институт Консалтинга<br>и Социального Анализа<br>[ИКСА]</p>
+				<p class="footer-subtitle">Программы профессионального обучения</p>
+			</div>
+	        
+			<div class="col col-md-4 second">
+				<p class="footer-contacts-title">Контакты</p>
+				<p class="footer-contacts">Ватсап/Вайбер - 8 (913) 675 87 76<br>vaspronas@gmail.com<br>Скайп: vaspronas</p>
+			</div>
+
+	    </div>  <!-- / .row -->
+	</div> <!-- / .container -->
+</div> <!-- / #reg-node4-inner -->
+</div> <!-- / #reg-node4 -->
+
+
+<!-- BOTTOM BAR (COPYRIGHT) -->
+<div id="reg-node5" class="ad-fw-block">
+	<div class="container">
+		<div class="row">
+			<p>&copy; ICSA Copyright. 2015-2018 All Rights Reserved</p>
+	    </div>  <!-- / .row -->
+	</div> <!-- / .container -->
+</div> <!-- / #reg-node5 -->
+
 
 @if ( $is_reg == 1 ) 
 	<!-- Modal -->

@@ -1,11 +1,14 @@
 @extends('layout')
-	
+
 @section('content')
-<div class="main-content">
+
+<!-- COUNTDOWN -->
+<div id="reg-node1" class="ad-fw-block">
+<div id="reg-node1-inner">
 	<div class="container">
 
 		<div class="row">
-			<div class="col-12 base-block">
+			<div class="col-12">
 				<div class="base-content">
 					<h4>Вы успешно подтвердили свой Email</h4>
 					<h1>Идет процесс получения курса бесплатно</h1>
@@ -14,7 +17,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-12 col-md-7 base-block">
+			<div class="col-12 col-md-7">
 				<div class="base-content">
 					<h2>Как пригласить друзей</h2>
 					<p>Ваша ссылка для приглашения:</p>
@@ -24,7 +27,7 @@
 				</div>
 			</div>
 			
-			<div class="col-12 col-md-5 base-block">
+			<div class="col-12 col-md-5">
 				<div class="base-content">
 					<h2>Вы пригласили <strong>{{$count_invite}}</strong> друзей из 6</h2>
 					@foreach ( $share_links as $key => $value )
@@ -33,7 +36,8 @@
 				</div>
 			</div>
 		</div> <!-- / row -->
-
+		
 	</div>
+</div>
 </div>
 @endsection

@@ -12,45 +12,41 @@
 */
 
 
-//Route::get('/', 'HomeController@registerForm');
-Route::get('/{referal?}', 'HomeController@registerForm');
+Route::get('/', 'HomeController@registerForm');
+//Route::get('/{referal?}', 'HomeController@registerForm');
 Route::post('/register', 'HomeController@register');
+Route::get('/verify', 'HomeController@verify');
 // Route::get('/confirm', 'HomeController@beforeConfirm');
 Route::get('/confirm/{conflink}', 'HomeController@confirmEmailPage');
 Route::get('/send-mail', 'HomeController@sendConfirmMail');
 
-
 /*
-Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
-Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
-Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
+	Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
+	Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
+	Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 
-
-Route::group(['middleware' => 'auth'], function() {
-	Route::get('/profile', 'ProfileController@index');
-	Route::post('/profile', 'ProfileController@store');
-	Route::get('/logout', 'AuthController@logout');
-});
-
-
-Route::group(['middleware' => 'guest'], function() {
+	Route::group(['middleware' => 'guest'], function() {
 	Route::get('/register', 'AuthController@registerForm');
 	Route::post('/register', 'AuthController@register');
 
 	Route::get('/login', 'AuthController@loginForm')->name('login');
 	Route::post('/login', 'AuthController@login');
 });
+*/
 
+// Route::group(['middleware' => 'auth'], function() {
+// 	Route::get('/', 'RegisterController@index');
+// // 	Route::get('/profile', 'ProfileController@index');
+// // 	Route::post('/profile', 'ProfileController@store');
+// // 	Route::get('/logout', 'AuthController@logout');
+// });
 
 Route::group([
-		'prefix'=>'admin',
+		'prefix'=>'admin/panel',
 		'namespace'=>'Admin',
-		'middleware' => 'admin'
+		//'middleware' => 'admin'
 	], function() {
 		Route::get('/', 'DashboardController@index');
-		Route::resource('/categories', 'CategoriesController');
-		Route::resource('/tags', 'TagsController');
-		Route::resource('/users', 'UsersController');
-		Route::resource('/posts', 'PostsController');
+		Route::resource('/setings', 'SetingsController');
+		// Route::resource('/users', 'UsersController@index');
 });
-*/

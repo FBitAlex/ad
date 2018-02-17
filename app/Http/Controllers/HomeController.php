@@ -90,6 +90,12 @@ class HomeController extends Controller {
 			return view( 'pages.course', compact('params', 'share_links') );
 		}
 	}
+	
+	public function verify() {
+		return view( 'pages.verify', [
+			'email' 	=> 'user email'
+		]);
+	}
 
 	// public function confirmEmail( $conflink ) {
 	// 	if ( $conflink != null ) {
