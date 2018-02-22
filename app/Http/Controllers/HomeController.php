@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Category;
 use App\Project;
+use App\Testimonials;
+use App\Settings;
 
 use App\Mail\RegisterMail;
 use App\Mail\OpenCourseMail;
@@ -14,9 +16,11 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 	
-	public static function registerForm( $referal = null ) {
+	public static function index( $referal = null ) {
+		$testimonials = Testimonials::getList();
+		$cups = Settings::getParamByGroup('cups');
 		$is_reg = 0;
-		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links', 'is_reg') );
+		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links', 'is_reg', 'testimonials', 'cups') );
 	}
 
 	public function register(Request $request) {
@@ -30,16 +34,17 @@ class HomeController extends Controller {
 
 		// send mail
 		\Mail::to($user)->send(new RegisterMail($user));
-		\Notify::success('На вашу почту отправлено письмо с подтверждением. Проверьте почту.');
+		// \Notify::success('На вашу почту отправлено письмо с подтверждением. Проверьте почту.');
 
 		// check cnt invited
 		$user = User::getUserByReferal( $request->referal );
-		if ( $request->referal != null && $user != null ) { // if enouth, then send letter about open course
+		
+		if ( $request->referal != null && $user != null ) {
 			
 			$params = Project::getProjectParams( 'astro' );
 			$currentInvited = User::getCountReferal( $request->referal );
 
-			if  ( $params->need_cnt_invite <= $currentInvited ) {
+			if  ( $params->need_cnt_invite <= $currentInvited ) { // if enouth, then send letter about open course for download
 				if (!$user->is_send) {
 					\Mail::to($user)->send(new OpenCourseMail( $user ));
 					$user->is_send = 1;
@@ -50,11 +55,11 @@ class HomeController extends Controller {
 				\Mail::to($user)->send(new OneMoreReferalMail( $currentInvited,  $params->need_cnt_invite ));
 			}
 		}
-			
-		//return $this->registerForm( $is_reg, $request->get('referal') );
-		return view( 'pages.register', [
-			'is_reg' 	=> $is_reg,
-			'referal' 	=> $request->get('referal') 
+
+		return view( 'pages.verify', [
+			'is_reg' 		=> $is_reg,
+			'active_step' 	=> "active1",
+			'referal' 		=> $request->get('referal') 
 		]);
 		//return redirect('/'.$request->get('referal'));
 		//return redirect()->route('startPage', ['referal' => $request->get('referal')]);
@@ -70,7 +75,12 @@ class HomeController extends Controller {
 	// public function beforeConfirm(  ) {
 	// 	return view('pages.before_confirm');
 	// }
-	
+
+	public function sendConfirmMail( $user ) {
+		\Mail::to($user)->send(new InviteMail($user));
+		//return view( 'pages.before_confirm', compact('user') );
+	}
+
 	public function confirmEmailPage( $conflink ) {
 		
 		if ( $conflink == null ) {
@@ -82,18 +92,22 @@ class HomeController extends Controller {
 		
 		$params = Project::getProjectParams( 'astro' );
 		
-		$share_links = \Share::load('http://www.google/com', 'Курс астрология')->services('facebook', 'vk', 'twitter');
-		
+		$share_links = \Share::load('http://www.google/com', 'Курс по астрологии')->services('facebook', 'vk', 'twitter');
+		 
 		if ( $count_invite < $params->need_cnt_invite ) {
-			return view( 'pages.confirm', compact('user', 'count_invite', 'share_links') );
+			$active_step = "active2";
+			return view( 'pages.confirm', compact('user', 'count_invite', 'share_links', 'active_step') );
 		} else {
-			return view( 'pages.course', compact('params', 'share_links') );
+			$active_step = "active3";
+			return view( 'pages.course', compact('params', 'share_links', 'active_step') );
 		}
 	}
 	
 	public function verify() {
+		$active_step = "active2";
 		return view( 'pages.verify', [
-			'email' 	=> 'user email'
+			'email'			=> 'user email',
+			'active_step' 	=> "active1"
 		]);
 	}
 

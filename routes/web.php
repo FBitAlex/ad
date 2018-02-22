@@ -12,13 +12,14 @@
 */
 
 
-Route::get('/', 'HomeController@registerForm');
+Route::get('/', 'HomeController@index');
 //Route::get('/{referal?}', 'HomeController@registerForm');
 Route::post('/register', 'HomeController@register');
 Route::get('/verify', 'HomeController@verify');
 // Route::get('/confirm', 'HomeController@beforeConfirm');
 Route::get('/confirm/{conflink}', 'HomeController@confirmEmailPage');
 Route::get('/send-mail', 'HomeController@sendConfirmMail');
+Route::get('/invite-mail', 'HomeController@sendInviteMail');
 
 /*
 	Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
@@ -47,6 +48,9 @@ Route::group([
 		//'middleware' => 'admin'
 	], function() {
 		Route::get('/', 'DashboardController@index');
-		Route::resource('/setings', 'SetingsController');
+		Route::get('/settings/{param}', 'SetingsController@getParamByGroup');
+		Route::get('/settings/subs/list', 'SubsController@getList');
+		Route::get('/settings/testimonials/list', 'TestimonialsController@getList');
+		//Route::get('/params/btn_color', 'ParamsController');getParamByGroup
 		// Route::resource('/users', 'UsersController@index');
 });

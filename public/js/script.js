@@ -21,7 +21,7 @@ $(document).ready(function(){
         navigationText:["",""],
         slideSpeed:1000,
         singleItem:true,
-        autoPlay:true,
+        autoPlay:false,
         info: true,
         afterAction : afterAction,
         afterInit: afterInit,

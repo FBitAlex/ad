@@ -12,6 +12,11 @@
 	box-sizing: border-box;
 }
 
+body, html {
+	width: 100%;
+	height: 100%;
+}
+
 body {
 	background-color: #F4F4F4;
 	color: #FFF;
@@ -27,14 +32,47 @@ body {
 }
 
 .share-link {
-	margin: 4px 0;
 	display: block;
+	margin: 8px 0;
+	padding: 8px;
+	outline: none;
+	background-color: #007BFF80;
+	outline: none !important;
 }
 
+/*.mail-link {
+	display: block;
+	margin: 30px 0 0;
+	padding: 8px;
+	width: 100%;
+	outline: none;
+	background-color: #1E9C8580;
+	outline: none !important;
+	line-height: 28px;
+	font-size: 18px;
+}*/
+
+
+
+.ta-center {
+	text-align: center;
+}
+
+/*.share-link.facebook {
+	background-image: url(../img/facebook_logo.png);
+}
+.share-link.vk {
+	background-image: url(../img/vk_logo.png);
+}
+.share-link.twitter {
+	background-image: url(../img/twitter_logo.png);
+}
+
+*/
 .page-title {
 	text-align: center;
 	font-size: 32px;
-	padding: 26px 0 14px;
+/*	padding: 26px 0 14px;*/
 }
 
 .ad-fw-block {
@@ -45,7 +83,56 @@ body {
 	background-size: cover;
 }
 
+.ad-fh-block {
+	min-height: 100%;
+}
+
 .ad-btn {
+	display: block;
+	padding: 25px;
+	margin: 20px 0;
+	width: 100%;
+	color: #FFF;
+	font-family: Impact;
+	letter-spacing: 2px;
+	word-spacing: 8px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 20px;
+	font-weight: normal;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 10px;
+	outline: none;
+	cursor: pointer;
+
+	background-color: #4ACAB4;
+	background-position: 0% 50%;
+	background-repeat: no-repeat;
+	box-shadow: inset 0px -5px 0px 0px rgba(0,0,0,0.3);
+}
+
+.ad-btn.small {
+	margin: 0;
+	padding: 7px 0 11px;
+	font-size: 16px;
+}
+
+
+.ad-btn:hover {
+	color: #FFF;
+	text-decoration: none;
+	box-shadow: inset 0px -80px 0px 0px rgba(0,0,0,0.1), inset 0px -5px 0px 0px rgba(0,0,0,0.3);
+}
+
+.ad-btn.email-ico {
+	background-image: url(../img/email_ico.png);
+}
+.ad-btn.book-ico {
+	background-image: url(../img/book_ico.png);
+}
+
+/*
 	background-color: #1E9C85;
 	border-radius: 5px;
 	border-style: solid;
@@ -57,6 +144,7 @@ body {
 	color: #fff;
 	outline: none;
 	cursor: pointer;
+*/
 }
 
 .ad-btn:hover {
@@ -77,8 +165,9 @@ input {
 .ad-logo {
 	margin-bottom: 30px;
 	height: 100px;
-	width: 285px;
+/*	width: 285px;*/
 	background-image: url(../img/icsa_logo.png);
+	background-repeat: no-repeat;
 }
 
 /* ============ COUNTDOWN ============= */
@@ -155,15 +244,27 @@ input {
 #reg-node2-inner {
 	padding: 60px 0;
 	background-image: linear-gradient(to right, #1a1e1deb 0%, #194d4d3d 80%);
-	-webkit-box-shadow: inset 0px 0px 36px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: inset 0px 0px 36px 0px rgba(0,0,0,0.75);
 	box-shadow: inset 0px 0px 36px 0px rgba(0,0,0,0.75);
 }
 
 #reg-node2 .cup-pic {
 	margin: 40px auto;
-	width: 360px;
-	height: 395px;
+	width: 280px;
+	height: 333px;
+	background: url(../img/cup_bg.png) 0 0 no-repeat;
+}
+
+#reg-node2 .cup-title {
+	position: absolute;
+    bottom: 81px;
+    width: 100%;
+    left: 5px;
+    font-size: 26px;
+    font-family: Impact;
+	line-height: 26px;
+    color: #6B3E09;
+    text-align: center;
+    text-shadow: 0px 0px 4px #FFF;
 }
 
 #reg-node2 .cup-pic.pic-1 {
@@ -175,6 +276,7 @@ input {
 #reg-node2 .cup-pic.pic-3 {
 	background: url(../img/cup_3.png) 0 0 no-repeat;
 }
+
 /* ============ TESTIMONIALS ============= */
 
 #reg-node3 {
@@ -202,15 +304,19 @@ input {
 	line-height:26px;
 }
 .testimonial .pic{
-	width: 100px;
-	height: 100px;
 	position: absolute;
 	bottom: -10px;
 	left: 25px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	overflow: hidden;
 }
+
 .testimonial .pic img{
+	display: block;
 	width: 100%;
-	height: auto;
+	height: 100%;
 }
 .testimonial .testimonial-title{
 	font-size: 20px;
@@ -250,14 +356,6 @@ input {
 }
 .owl-next:before{
 	content: "\f054";
-}
-
-#testimonial-slider .pic {
-	border-radius: 50%;
-	background-image: url(../img/ava.png);
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
 }
 
 /* ============ FOOTER ============= */
@@ -307,27 +405,87 @@ input {
 /* ====================================================================================================== */
 .step-header {
 	background-image: url(../img/reg_1_bg.jpg);
-	    min-height: 50%;
 }
 
 .step-page {
-	background-image: url(../img/reg_2_bg.jpg);
-	    min-height: 50%;
+	width: 100%;
+	min-height: 100%;
+	background-color: transparent;
+	background-size: cover;
+	background-repeat: no-repeat;
+/*	background-attachment: fixed;*/
 }
+
+.p200 {
+	background-size: 200%;
+}
+
+.bgp-top {
+	background-position: top;
+}
+.bgp-center {
+	background-position: center;
+}
+.bgp-bottom {
+	background-position: bottom;
+}
+
+
+.step-page.bg-1 {
+	background-image: url(../img/reg_1_bg.jpg);
+}
+.step-page.bg-2 {
+	background-image: url(../img/reg_2_bg.jpg);
+}
+.step-page.bg-3 {
+	background-image: url(../img/reg_3_bg.jpg);
+}
+.step-page.bg-4 {
+	background-image: url(../img/reg_4_bg.jpg);
+}
+
+#step-page-inner {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	background-color: #0006;
+	padding: 80px 0;
+	min-height: 100%;
+}
+
 
 .steps {
-	padding: 20px;
-	border: 1px solid #FFF;
-	border-radius: 4px;
+	padding: 20px 0;
 }
 
-.steps.active {
-	background-color: #1E9C8580;
+.ad-active-step1.active1,
+.ad-active-step2.active2,
+.ad-active-step3.active3 {
+	background-color: #0008;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+.ad-active-content {
+	padding: 40px;
+	border-radius:  20px;
+	background-color: #0008;
+}
+
+.ad-active-content.active1 {
+	border-top-left-radius: 0;
+}
+
+.ad-active-content.active3 {
+	border-bottom-left-radius: 0;
 }
 
 .steps .ico {
-	width: 80px;
-	height: 80px;
+	width: 100px;
+	height: 100px;
 	margin: 0px auto 20px;
 
 	background-clip: content-box;
@@ -338,20 +496,51 @@ input {
 }
 
 .ico.step-1 {
-	background-image: url(../img/step_1.png);
+	background-image: url(../img/step_email_ico.png);
 }
 
 .ico.step-2 {
-	background-image: url(../img/step_2.png);
+	background-image: url(../img/step_friends_ico.png);
 }
 
 .ico.step-3 {
-	background-image: url(../img/step_3.png);
+	background-image: url(../img/step_books_ico.png);
 }
 
 .steps .text {
 	text-align: center;
+	font-family: Impact;
+	font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	word-spacing: 8px;
 }
+
+.mtop {
+	margin-top: 80px;
+}
+
+.center-alert {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	border: 1px solid #FFF;
+	border-radius: 4px;
+	text-align: center;
+	background-color: #1E9C8580;
+}
+
+.frends-alert {
+	padding: 10px 40px;
+	margin: 0 auto 20px;
+	font-size: 20px;
+	border: 1px solid #FFF;
+	border-radius: 4px;
+	text-align: center;
+	background-color: #007BFF80;
+}
+
 
 /* ======== INFO BLOCK ========*/
 
@@ -398,7 +587,7 @@ input {
 	padding: 20px;
 	text-align: center;
 	margin-bottom: 24px;
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .link-to-form:hover {

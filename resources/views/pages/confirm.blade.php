@@ -2,42 +2,56 @@
 
 @section('content')
 
-<!-- COUNTDOWN -->
-<div id="reg-node1" class="ad-fw-block">
-<div id="reg-node1-inner">
-	<div class="container">
+	<div class="step-page bg-1 bgp-top">
+		<div id="step-page-inner">
+			<div class="container">
+				<div class="row">
+			
+					<div class="col col-md-4">
+						@include('pages.steps-header')
+					</div>
 
-		<div class="row">
-			<div class="col-12">
-				<div class="base-content">
-					<h4>Вы успешно подтвердили свой Email</h4>
-					<h1>Идет процесс получения курса бесплатно</h1>
-				</div>	
+					<div class="col-12 col-md-8 ad-active-content {{$active_step}}">
+						
+						<div class="center-alert">
+							Вы успешно подтвердили свой Email
+						</div>	
+	
+						<div class="frends-alert">
+							Вы пригласили <strong>{{$count_invite}}</strong> друзей из 6
+						</div>
+	
+						<div class="ta-center">
+							<h4>Как пригласить больше друзей ?</h4>
+						</div>
+
+						<p>Письмом по почте:</p>
+						<p>Ваша ссылка для приглашения:</p>
+						<div class="form-group">
+							<input type="text" class="form-control" value="http://ad/{{$user->self_referal}}">
+						</div>
+
+						<form class="" role="form" method="post" action="/invite-mail">
+							{{csrf_field()}}
+							<!-- <input type="hidden" name="user" value="{ {$invite_mail_content}}"> -->
+							<button type="submit" class="ad-btn email-ico">Отправить письмо другу</button>
+						</form>
+						
+						<br>
+						<p>Через соцсети:</p>
+
+						@foreach ( $share_links as $key => $value )
+		        			<a href="{{$value}}" class="btn btn-primary share-link {{$key}}">
+		        				<img src="/img/{{$key}}_logo.png">
+		        			</a>
+				    	@endforeach
+
+					</div>
+
+
+				</div> <!-- / row -->
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-12 col-md-7">
-				<div class="base-content">
-					<h2>Как пригласить друзей</h2>
-					<p>Ваша ссылка для приглашения:</p>
-					<div class="form-group">
-						<input type="text" class="form-control" value="http://ad/{{$user->self_referal}}">
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-12 col-md-5">
-				<div class="base-content">
-					<h2>Вы пригласили <strong>{{$count_invite}}</strong> друзей из 6</h2>
-					@foreach ( $share_links as $key => $value )
-	        			<a href="{{$value}}" class="btn btn-primary share-link {{$key}}">{{$key}}</a>
-			    	@endforeach
-				</div>
-			</div>
-		</div> <!-- / row -->
-		
 	</div>
-</div>
-</div>
+	
 @endsection

@@ -91,7 +91,7 @@
 					</div>
 					<input type="hidden" name="referal" value="{{$referal}}">
 
-					<button type="submit" class="ad-btn full-width">Получить (за прилашение 4 друзей)</button>
+					<button type="submit" class="ad-btn email-ico">Получить</button>
 
 				</form>
 
@@ -150,16 +150,25 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="col col-md-4">
-				<div class="cup-pic pic-1"></div>
+			@foreach ($cups as $cup)
+				<div class="col col-md-4">
+					<div class="cup-pic"></div>
+					<div class="cup-title">
+						{!! $cup->value !!}
+					</div>
+				</div>
+			@endforeach
+<!-- 			<div class="col col-md-4">
+				<div class="cup-pic pic-2">
+					{ {$cup->content2}}
+				</div>
 			</div>
 			<div class="col col-md-4">
-				<div class="cup-pic pic-2"></div>
+				<div class="cup-pic pic-3">
+					{ {$cup->content3}}
+				</div>
 			</div>
-			<div class="col col-md-4">
-				<div class="cup-pic pic-3"></div>
-			</div>
-
+ -->
 	    </div>  <!-- / .row -->
 	</div> <!-- / .container -->
 </div> <!-- / #reg-node2-inner -->
@@ -176,49 +185,14 @@
 			<div class="col col-md-10">
 
 				<div id="testimonial-slider" class ="owl-carousel">
-					<div class="testimonial">
-						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
-						<div class="pic">
-							<img src="" alt="">
-						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
-					</div>
-
-					<div class="testimonial">
-						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
-						<div class="pic">
-							<img src="" alt="">
-						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
-					</div>
-					<div class="testimonial">
-						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
-						<div class="pic">
-							<img src="" alt="">
-						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
-					</div>
-					<div class="testimonial">
-						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
-						<div class="pic">
-							<img src="" alt="">
-						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
-					</div>
-					<div class="testimonial">
-						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
-						<div class="pic">
-							<img src="" alt="">
-						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
-					</div>
-					<div class="testimonial">
-						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
-						<div class="pic">
-							<img src="" alt="">
-						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
-					</div>
-					<div class="testimonial">
-						<p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam enim diam, tempus vel ultricies viverra, luctus in elit. Aliquam tempus blandit velit, in pharetra ex volutpat a. Cras eu augue ac nisl tempor commodo."</p>
-						<div class="pic">
-							<img src="" alt="">
-						</div><h3 class="testimonial-title">Williamson<small>Web Developer</small></h3>
-					</div>
+					@foreach ($testimonials as $testim)
+						<div class="testimonial">
+							<p class="description">{{$testim->content}}</p>
+							<div class="pic">
+								<img src="/img/testimonials/{{$testim->photo}}" alt="">
+							</div><h3 class="testimonial-title">{{$testim->name}}<small>{{$testim->position}}</small></h3>
+						</div>
+					@endforeach
 	            </div>
 
 	        </div>
@@ -259,7 +233,7 @@
 							</div>
 							<div class="col-12 col-md-4">
 								<input type="hidden" name="referal" value="{{$referal}}">
-								<button type="submit" class="form-control ad-btn">Получить</button>
+								<button type="submit" class="ad-btn small">Получить</button>
 							</div>
 						</div>
 					</form>
@@ -308,7 +282,7 @@
 
 @if ( $is_reg == 1 ) 
 	<!-- Modal -->
-	<div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="false">
+<!-- 	<div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="false">
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-header">
@@ -337,7 +311,7 @@
 
 	<script>
 		$('#registerModal').modal('show');
-	</script>
+	</script> -->
 
 @endif
 @endsection
