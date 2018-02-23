@@ -17,7 +17,7 @@ class Settings extends Model {
 	public static function getParamByGroup( $group ) {
     	return self::where('group', $group)
     	->orderBy('group', 'ASC')
-    	->orderBy('subgroup', 'ASC')
+    	->orderBy('type', 'ASC')
     	->get();
     }
 

@@ -27,15 +27,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($users as $user)
+				@foreach($subs as $sub)
 				<tr>
-					<td>{{$user->id}}</td>
-					<td>{{$user->name}}</td>
-					<td>{{$user->email}}</td>
-					<td>{{$user->self_referal}}</td>
-<!-- 					<td>{{$user->parent_referal}}</td> -->
-					<td>{{$user->confirm_link}}</td>
-					<td>{{$user->created_at}}</td>
+					<td>{{$sub->id}}</td>
+					<td>{{$sub->name}}</td>
+					<td>{{$sub->email}}</td>
+					<td>{{$sub->self_referal}}</td>
+<!-- 					<td>{{$sub->parent_referal}}</td> -->
+					<td>{{$sub->confirm_link}}</td>
+					<td>{{$sub->created_at}}</td>
 				</tr>
 				@endforeach
 			</tbody>

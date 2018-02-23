@@ -16,7 +16,7 @@
 			@foreach ($params as $param)
 				<div class="form-group">
 					<label for="{{$param->name}}">{{$param->desc}}</label>
-					<input type="text" class="form-control" id="name" name="{{$param->name}}" value="{{$param->value}}">
+					<input type="{{$param->type}}" class="form-control" id="name" name="{{$param->name}}" value="{{$param->value}}">
 				</div>
 			@endforeach
 		</form>

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Testimonials extends Model {
 
-   	public static function getList() {
+	protected $table = 'testimonials';
+
+	public static function getList() {
 		return self::all();
 	}
 }

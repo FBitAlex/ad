@@ -9,10 +9,10 @@ use App\Http\Controllers\Controller;
 
 class SubsController extends Controller {
     
-    protected $table = 'users';
+    protected $table = 'subscribers';
 
     public static function getList() {
-    	$users =  Subs::getList();
-    	return view( 'admin.settings.subs', compact('users') );
+    	$subs =  Subs::getList();
+    	return view( 'admin.settings.subs', compact('subs') );
     }
 }

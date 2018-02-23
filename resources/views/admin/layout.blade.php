@@ -69,16 +69,9 @@
         </li>
         
         <li class="treeview">
-          <a href="color">
+          <a href="design">
             <i class="fa fa-paint-brush"></i>
-            <span>Цвета</span>
-          </a>
-        </li>
-
-        <li class="treeview">
-          <a href="/background">
-            <i class="fa fa-object-group"></i>
-            <span>Фоны</span>
+            <span>Дизайн</span>
           </a>
         </li>
 
@@ -90,14 +83,14 @@
         </li>
 
         <li>
-        	<a href="list">
+        	<a href="subscribers">
         		<i class="fa fa-users"></i>
         		<span>Подписчики</span>
     	    </a>
     	</li>
 
         <li>
-        	<a href="testimonials/list">
+        	<a href="testimonials">
         		<i class="fa fa-comments"></i>
         		<span>Отзывы</span>
     	    </a>
