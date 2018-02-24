@@ -19,9 +19,9 @@ class HomeController extends Controller {
 	
 	public static function index( $referal = null ) {
 		$testimonials = Testimonials::getList();
-		$cups = Settings::getParamByGroup('cups');
+		$settings = Settings::getParamBypage('title');
 		$is_reg = 0;
-		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links', 'is_reg', 'testimonials', 'cups') );
+		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links', 'is_reg', 'testimonials', 'settings') );
 	}
 
 	public function register(Request $request) {

@@ -18,16 +18,16 @@
 			@foreach ($params as $param)
 				<label for="{{$param->name}}">{{$param->desc}}</label>
 				<div class="row">
-					<div class="form-group col col-md-4 box-{{$param->type}}">
+					<div class="form-group col-8 col-md-3 box-{{$param->type}}">
 						<input type="{{$param->type}}" class="form-control {{$param->type}}" id="{{$param->name}}" name="{{$param->name}}" value="{{$param->value}}">
 					</div>
-					<div class="form-group col-1 col-md-1">
+					<div class="form-group col-2 col-md-1">
 						<div class="color-box" style="background-color: {{$param->value}}"></div>
 					</div>
 				</div>
 			@endforeach
 
-			<div class="form-group col-2 col-md-4">
+			<div class="form-group col-12 col-md-4">
 				<input type="submit" class="btn btn-success" value="Сохранить">
 			</div>
 	

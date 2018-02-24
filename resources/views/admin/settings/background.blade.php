@@ -18,13 +18,12 @@
 
 				<label for="{{$param->name}}">{{$param->desc}}</label>
 				<div class="row">
-					<div class="form-group col-1 img-container">
+					<div class="form-group col-4 col-md-1 img-container">
 						<img src="/img/settings/{{$param->value}}">
 
 					</div>
-				
 
-					<div class="form-group col-1s">
+					<div class="form-group col-8 col-md-2" >
 						<div class="upload-btn-wrapper">
 		  					<button class="btn btn-primary btn-fw">Загрузить</button>
 		  					<input type="file" class="form-control btn btn-default" id="{{$param->name}}" name="bgimage">

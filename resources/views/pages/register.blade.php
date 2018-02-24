@@ -91,7 +91,7 @@
 					</div>
 					<input type="hidden" name="referal" value="{{$referal}}">
 
-					<button type="submit" class="ad-btn email-ico">Получить</button>
+					<button type="submit" class="ad-btn email-ico" style="background-color: {{$settings['title_email_button_color']}}">Получить</button>
 
 				</form>
 
@@ -150,14 +150,14 @@
 	<div class="container">
 		<div class="row">
 
-			@foreach ($cups as $cup)
+<!-- 			@ foreach ($cups as $cup)
 				<div class="col col-md-4">
 					<div class="cup-pic"></div>
 					<div class="cup-title">
-						{!! $cup->value !!}
+						{ !! $cup->value !!}
 					</div>
 				</div>
-			@endforeach
+			@ endforeach -->
 <!-- 			<div class="col col-md-4">
 				<div class="cup-pic pic-2">
 					{ {$cup->content2}}
