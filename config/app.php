@@ -171,6 +171,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Andheiberg\Notify\NotifyServiceProvider::class,
         Chencha\Share\ShareServiceProvider::class,
+        Mavinoo\LaravelBatch\LaravelBatchServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -235,6 +236,7 @@ return [
 
         'Notify' => Andheiberg\Notify\Facades\Notify::class,
         'Share' => Chencha\Share\ShareFacade::class,
+        'Batch' => Mavinoo\LaravelBatch\LaravelBatchFacade::class,
     ],
 
 ];

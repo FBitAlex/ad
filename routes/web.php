@@ -60,8 +60,16 @@ Route::group([
 		// Route::get('/', 'DashboardController@index');
 //		Route::get('/', 'SettingsController@getProjectPage');
 		Route::get('/project', 'SettingsController@getProjectPage');
-		Route::get('/design', 'SettingsController@getDesignPage');
+		Route::post('/project', 'SettingsController@setProject');
+		
+		Route::get('/color', 'SettingsController@getColorPage');
+		Route::post('/color', 'SettingsController@setColor');
+
+		Route::get('/background', 'SettingsController@getBackgroundPage');
+		Route::post('/background', 'SettingsController@setBackground');
+
 		Route::get('/content', 'SettingsController@getContentPage');
+		Route::post('/content', 'SettingsController@setContent');
 		
 		Route::get('/subscribers', 'SubsController@getList');
 		Route::get('/testimonials', 'TestimonialsController@getList');

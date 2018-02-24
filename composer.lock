@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "040b5493e83ebb0cac99770255a09765",
+    "content-hash": "03c28707f132342661fad589e55a050f",
     "packages": [
         {
             "name": "andheiberg/notify",
@@ -1330,6 +1330,39 @@
                 "storage"
             ],
             "time": "2017-08-06T17:41:04+00:00"
+        },
+        {
+            "name": "mavinoo/laravel-batch",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mavinoo/laravelBatch.git",
+                "reference": "c1fbb26cc4cb776f27f8164bd591416a44a97821"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mavinoo/laravelBatch/zipball/c1fbb26cc4cb776f27f8164bd591416a44a97821",
+                "reference": "c1fbb26cc4cb776f27f8164bd591416a44a97821",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mavinoo\\LaravelBatch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohammad Ghanbari",
+                    "email": "wordpress.iran@gmail.com"
+                }
+            ],
+            "description": "Insert and update batch (bulk) in laravel",
+            "time": "2018-02-07 09:29:06"
         },
         {
             "name": "monolog/monolog",
@@ -4598,7 +4631,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mavinoo/laravel-batch": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

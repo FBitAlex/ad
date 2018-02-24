@@ -6,20 +6,13 @@
   <title>Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="/css/admin.css">
-  <style>
-	  table.table form
-	  {
-		display: inline-block;
-	  }
-	  button.delete
-	  {
-		background: transparent;
-		border: none;
-		color: #337ab7;
-		padding: 0px;
-	  }
-	</style>
+  	<link rel="icon" type="image/png" href="/img/favicon.png">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap-colorpicker.min.css">
+  	<link rel="stylesheet" href="/css/admin.css">
+
+<link rel="stylesheet" href="/css/ad_admin.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -59,26 +52,33 @@
 	<section class="sidebar">
 
 	<ul class="sidebar-menu">
-        <li class="header">Админ меню</li>
+        <li class="header">Меню</li>
 
         <li class="treeview">
           <a href="project">
             <i class="fa fa-product-hunt"></i>
-            <span>Проект</span>
+            <span>Параметры проекта</span>
           </a>
         </li>
         
         <li class="treeview">
-          <a href="design">
+          <a href="color">
             <i class="fa fa-paint-brush"></i>
-            <span>Дизайн</span>
+            <span>Цвета элементов</span>
+          </a>
+        </li>
+
+        <li class="treeview">
+          <a href="background">
+            <i class="fa fa-image"></i>
+            <span>Фоновые изображения</span>
           </a>
         </li>
 
         <li class="treeview">
           <a href="content">
             <i class="fa fa-font"></i>
-            <span>Тексты</span>
+            <span>Текстовые блоки</span>
           </a>
         </li>
 
@@ -314,10 +314,15 @@
 <script src="/js/admin.js"></script>
 <script src="/plugins/ckeditor/ckeditor.js"></script>
 <script src="/plugins/ckfinder/ckfinder.js"></script>
+<script src="/js/bootstrap-colorpicker.min.js"></script>
+
 <script>
 	$(document).ready(function(){
 		var editor = CKEDITOR.replaceAll();
 		CKFinder.setupCKEditor( editor );
+  
+  		$('.colorpicker').colorpicker();
+
 	})
 
 </script>

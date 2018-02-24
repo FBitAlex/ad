@@ -1,0 +1,41 @@
+.form-group.box-colorpicker {
+	min-height: 40px;
+}
+
+.colorpicker {
+	top: 0; 
+	left: 20px;
+}
+
+.color-box {
+	display: inline-block;
+	margin: 2px 20px 0;
+	width: 40px;
+	height: 32px;
+	border: 1px solid #000;
+	border-radius: 3px;
+}
+
+.img-container img {
+	width: 100%;
+}
+
+.upload-btn-wrapper {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	width: 100%;
+}
+
+.btn-fw {
+	width: 100%;
+}
+
+.upload-btn-wrapper input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	cursor: pointer;
+}
