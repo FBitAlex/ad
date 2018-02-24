@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Subs;
 use App\Category;
 use App\Project;
 use App\Testimonials;
@@ -29,7 +30,7 @@ class HomeController extends Controller {
 			'email' 	=> 'required|email|unique:users',
 		]);
 
-		$user = User::add($request->all());
+		$user = Subs::add($request->all());
 		$is_reg = 1;
 
 		// send mail
@@ -37,12 +38,12 @@ class HomeController extends Controller {
 		// \Notify::success('На вашу почту отправлено письмо с подтверждением. Проверьте почту.');
 
 		// check cnt invited
-		$user = User::getUserByReferal( $request->referal );
+		$user = Subs::getUserByReferal( $request->referal );
 		
 		if ( $request->referal != null && $user != null ) {
 			
 			$params = Project::getProjectParams( 'astro' );
-			$currentInvited = User::getCountReferal( $request->referal );
+			$currentInvited = Subs::getCountReferal( $request->referal );
 
 			if  ( $params->need_cnt_invite <= $currentInvited ) { // if enouth, then send letter about open course for download
 				if (!$user->is_send) {
@@ -87,8 +88,8 @@ class HomeController extends Controller {
 			return redirect('/');	
 		}
 
-		$user = User::getUserByConfirmLink( $conflink );
-		$count_invite = User::getCountReferalUser( $conflink );
+		$user = Subs::getUserByConfirmLink( $conflink );
+		$count_invite = Subs::getCountReferalUser( $conflink );
 		
 		$params = Project::getProjectParams( 'astro' );
 		
@@ -113,7 +114,7 @@ class HomeController extends Controller {
 
 	// public function confirmEmail( $conflink ) {
 	// 	if ( $conflink != null ) {
-	// 		$count_invite = User::getCountReferalUser( $conflink );
+	// 		$count_invite = Subs::getCountReferalUser( $conflink );
 	// 		return view( 'pages.confirm', compact('count_invite', 'conflink') );
 	// 	}
 	// 	return redirect('/');

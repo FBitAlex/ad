@@ -58,6 +58,7 @@ Route::group([
 		//'middleware' => 'admin'
 	], function() {
 		// Route::get('/', 'DashboardController@index');
+//		Route::get('/', 'SettingsController@getProjectPage');
 		Route::get('/project', 'SettingsController@getProjectPage');
 		Route::get('/design', 'SettingsController@getDesignPage');
 		Route::get('/content', 'SettingsController@getContentPage');
