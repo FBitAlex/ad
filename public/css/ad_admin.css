@@ -39,3 +39,12 @@
 	opacity: 0;
 	cursor: pointer;
 }
+
+.admin-testimonials-photo {
+	width: 100px;
+	height: 100px;
+}
+
+.fa.clear:before {
+    margin-left: 4px;
+}

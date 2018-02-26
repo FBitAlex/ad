@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- COUNTDOWN -->
-<div id="reg-node1" class="ad-fw-block">
+<div id="reg-node1" class="ad-fw-block" style="background-image: url(/img/settings/{{$settings['title_header_bg']}})">
 <div id="reg-node1-inner">
 	<div class="container">
 		<div class="ad-logo"></div>
@@ -145,30 +145,38 @@
 
 
 <!-- CUPS -->
-<div id="reg-node2" class="ad-fw-block">
+<div id="reg-node2" class="ad-fw-block" style="background-image: url(/img/settings/{{$settings['title_cups_bg']}})">
 <div id="reg-node2-inner">
 	<div class="container">
 		<div class="row">
 
-<!-- 			@ foreach ($cups as $cup)
-				<div class="col col-md-4">
-					<div class="cup-pic"></div>
-					<div class="cup-title">
-						{ !! $cup->value !!}
-					</div>
-				</div>
-			@ endforeach -->
-<!-- 			<div class="col col-md-4">
-				<div class="cup-pic pic-2">
-					{ {$cup->content2}}
-				</div>
-			</div>
 			<div class="col col-md-4">
-				<div class="cup-pic pic-3">
-					{ {$cup->content3}}
+				<div class="cup-pic">
+					<img src="/img/settings/{{$settings['cup_image']}}">
+				</div>
+				<div class="cup-title">
+					{!! $settings['cup_text_1'] !!}
 				</div>
 			</div>
- -->
+
+			<div class="col col-md-4">
+				<div class="cup-pic">
+					<img src="/img/settings/{{$settings['cup_image']}}">
+				</div>
+				<div class="cup-title">
+					{!! $settings['cup_text_2'] !!}
+				</div>
+			</div>
+
+			<div class="col col-md-4">
+				<div class="cup-pic">
+					<img src="/img/settings/{{$settings['cup_image']}}">
+				</div>
+				<div class="cup-title">
+					{!! $settings['cup_text_3'] !!}
+				</div>
+			</div>
+
 	    </div>  <!-- / .row -->
 	</div> <!-- / .container -->
 </div> <!-- / #reg-node2-inner -->
@@ -176,7 +184,7 @@
 
 
 <!-- TESTIMONIALS -->
-<div id="reg-node3" class="ad-fw-block">
+<div id="reg-node3" class="ad-fw-block" style="background-image: url(/img/settings/{{$settings['title_testimonials_bg']}})">
 <div id="reg-node3-inner">
 	
 	<div class="container">
@@ -187,7 +195,7 @@
 				<div id="testimonial-slider" class ="owl-carousel">
 					@foreach ($testimonials as $testim)
 						<div class="testimonial">
-							<p class="description">{{$testim->content}}</p>
+							<p class="description">{!! $testim->content !!}</p>
 							<div class="pic">
 								<img src="/img/testimonials/{{$testim->photo}}" alt="">
 							</div><h3 class="testimonial-title">{{$testim->name}}<small>{{$testim->position}}</small></h3>
@@ -205,13 +213,13 @@
 
 
 <!-- INLINE FORM -->
-<div id="reg-node2" class="ad-fw-block">
+<div id="reg-node2" class="ad-fw-block" style="background-image: url(/img/settings/{{$settings['title_form_bg']}})">
 <div id="reg-node2-inner">
 	<div class="container">
-		<div class="row">
+		<div class="row justify-content-md-center">
 
 			<!-- register form block -->
-			<div class="col-12 col-md-12">
+			<div class="col-12 col-md-5 ">
 				<div class="base-content">
 					@if( session('status') )
 						<div class="alert alert-danger">
@@ -221,7 +229,7 @@
 					
 					@include('admin.errors')
 
-					<form class="" role="form" method="post" action="/register">
+<!-- 					<form class="" role="form" method="post" action="/register">
 						{{csrf_field()}}
 
 						<div class="form-group row">
@@ -236,6 +244,22 @@
 								<button type="submit" class="ad-btn small">Получить</button>
 							</div>
 						</div>
+					</form> -->
+
+					<form class="" role="form" method="post" action="/register">
+						{{csrf_field()}}
+
+						<div class="form-group">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Ваше Имя">
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" id="email" name="email" placeholder="E-mail адрес">
+						</div>
+						<input type="hidden" name="referal" value="{{$referal}}">
+
+						<button type="submit" class="ad-btn email-ico" style="background-color: {{$settings['title_email_button_color']}}">Получить</button>
+
 					</form>
 
 				</div>
@@ -249,7 +273,7 @@
 
 
 <!-- FOOTER -->
-<div id="reg-node4" class="ad-fw-block">
+<div id="reg-node4" class="ad-fw-block" style="background-color: {{$settings['footer_color']}}">
 <div id="reg-node4-inner">
 	<div class="container">
 		<div class="row">
@@ -271,7 +295,7 @@
 
 
 <!-- BOTTOM BAR (COPYRIGHT) -->
-<div id="reg-node5" class="ad-fw-block">
+<div id="reg-node5" class="ad-fw-block" style="background-color: {{$settings['bottom_bar_color']}}">
 	<div class="container">
 		<div class="row">
 			<p>&copy; ICSA Copyright. 2015-2018 All Rights Reserved</p>

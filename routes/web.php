@@ -72,8 +72,14 @@ Route::group([
 		Route::post('/content', 'SettingsController@setContent');
 		
 		Route::get('/subscribers', 'SubsController@getList');
+		
 		Route::get('/testimonials', 'TestimonialsController@getList');
+		Route::get('/testimonial/edit/{id}', 'TestimonialsController@getEditPage');
+		Route::post('/testimonial/edit-item', 'TestimonialsController@editItem');
+		
+		Route::get('/testimonial/add', 'TestimonialsController@getAddPage');
+		Route::post('/testimonial/add-item', 'TestimonialsController@addItem');
 
-		// Route::resource('/users', 'UsersController@index');
+		Route::get('/testimonial/delete/{id}', 'TestimonialsController@deleteItem');
 });
 

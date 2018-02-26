@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<div class="step-page bg-1 bgp-top">
+	<div class="step-page bgp-top" style="background-image: url(/img/settings/{{$settings['confirm_page_bg']}})">
 		<div id="step-page-inner">
 			<div class="container">
 				<div class="row">
@@ -34,15 +34,17 @@
 						<form class="" role="form" method="post" action="/invite-mail">
 							{{csrf_field()}}
 							<!-- <input type="hidden" name="user" value="{ {$invite_mail_content}}"> -->
-							<button type="submit" class="ad-btn email-ico">Отправить письмо другу</button>
+							<button type="submit" class="ad-btn email-ico" style="background-color: {{$settings['confirm_email_button_color']}}">Отправить письмо другу</button>
+
 						</form>
 						
 						<br>
 						<p>Через соцсети:</p>
 
 						@foreach ( $share_links as $key => $value )
-		        			<a href="{{$value}}" class="btn btn-primary share-link {{$key}}">
-		        				<img src="/img/{{$key}}_logo.png">
+		        			<a href="{{$value}}" class="ad-btn share-link {{$key}}" style="background-color: {{$settings['social_button_color']}}">
+		        				{{$key}}
+		        				<!-- <img src="/img/{ {$key}}_logo.png"> -->
 		        			</a>
 				    	@endforeach
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<div class="step-page bg-4 bgp-bottom p200">
+	<div class="step-page bgp-bottom p200" style="background-image: url(/img/settings/{{$settings['verify_page_bg']}})">
 		<div id="step-page-inner">
 			<div class="container">
 				<div class="row">
@@ -21,7 +21,7 @@
 							<li>Перейдите по ссылке внутри письма</li>
 						</ol>
 
-						<a class="ad-btn email-ico" href="/">ВЫСЛАТЬ ПОВТОРНО</a>
+						<a class="ad-btn email-ico" href="/" style="background-color: {{$settings['verify_email_button_color']}}">ВЫСЛАТЬ ПОВТОРНО</a>
 					</div>
 
 				</div>	

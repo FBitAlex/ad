@@ -20,11 +20,12 @@ class HomeController extends Controller {
 	public static function index( $referal = null ) {
 		$testimonials = Testimonials::getList();
 		$settings = Settings::getParamBypage('title');
+		//dd($settings);
 		$is_reg = 0;
 		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links', 'is_reg', 'testimonials', 'settings') );
 	}
 
-	public function register(Request $request) {
+	public function register( Request $request ) {
 		$this->validate($request, [
 			'name' 		=> 'required',
 			'email' 	=> 'required|email|unique:users',
@@ -57,10 +58,13 @@ class HomeController extends Controller {
 			}
 		}
 
+		$settings = Settings::getParamBypage('verify');
+
 		return view( 'pages.verify', [
 			'is_reg' 		=> $is_reg,
 			'active_step' 	=> "active1",
-			'referal' 		=> $request->get('referal') 
+			'referal' 		=> $request->get('referal'),
+			'settings'		=> $settings
 		]);
 		//return redirect('/'.$request->get('referal'));
 		//return redirect()->route('startPage', ['referal' => $request->get('referal')]);
@@ -97,19 +101,25 @@ class HomeController extends Controller {
 		 
 		if ( $count_invite < $params->need_cnt_invite ) {
 			$active_step = "active2";
-			return view( 'pages.confirm', compact('user', 'count_invite', 'share_links', 'active_step') );
+			$settings = Settings::getParamBypage('confirm');
+			return view( 'pages.confirm', compact('user', 'count_invite', 'share_links', 'active_step', 'settings') );
 		} else {
 			$active_step = "active3";
-			return view( 'pages.course', compact('params', 'share_links', 'active_step') );
+			$settings = Settings::getParamBypage('course');
+			return view( 'pages.course', compact('params', 'share_links', 'active_step', 'settings') );
 		}
 	}
 	
 	public function verify() {
 		$active_step = "active2";
-		return view( 'pages.verify', [
-			'email'			=> 'user email',
-			'active_step' 	=> "active1"
-		]);
+		$settings = Settings::getParamBypage('verify');
+		// return view( 'pages.verify', [
+		// 	'email'			=> 'user email',
+		// 	'active_step' 	=> "active1",
+		// 	'settings'		=> $settings
+		// ]);
+
+		return view( 'pages.verify', compact('settings', 'active_step') );
 	}
 
 	// public function confirmEmail( $conflink ) {

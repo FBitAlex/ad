@@ -8,8 +8,11 @@
 		<h1>
 			Отзывы
 		</h1>
+		<a href="testimonial/add" class="btn btn-success" title="Добавить отзыв">
+			<i class="fa fa-plus"></i>
+			Добавить отзыв
+		</a>
 	</section>
-
 	<br>
 
 	<section class="content">
@@ -21,6 +24,7 @@
 					<th>Должность</th>
 					<th>Фото</th>
 					<th>Текст</th>
+					<th>Действия</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,8 +32,22 @@
 				<tr>
 					<td>{{$testimonial->name}}</td>
 					<td>{{$testimonial->position}}</td>
-					<td>{{$testimonial->photo}}</td>
-					<td>{{$testimonial->content}}</td>
+					<td>
+						<img src="/img/testimonials/{{$testimonial->photo}}" class="admin-testimonials-photo">
+					</td>
+					<td>{!! $testimonial->content !!}</td>
+					<td>
+						<a href="testimonial/edit/{{$testimonial->id}}" class="btn btn-success" title="Редактировать">
+							<i class="fa fa-edit clear"></i>
+						</a>
+						<a 	href="testimonial/delete/{{$testimonial->id}}"
+							class="btn btn-danger"
+							title="Редактировать"
+							onclick="return confirm('Вы действительно хотите удалить данный отзыв ?')">
+							<i class="fa fa-trash clear"></i>
+						</a>
+
+					</td>
 				</tr>
 				@endforeach
 			</tbody>

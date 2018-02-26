@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<div class="step-page bg-2 bgp-top p200">
+	<div class="step-page bgp-top p200" style="background-image: url(/img/settings/{{$settings['course_page_bg']}})">
 		<div id="step-page-inner">
 			<div class="container">
 				<div class="row">
@@ -24,7 +24,7 @@
 						</ol>
 
 						<p class="ta-center">Получайте и изучайте прямо сейчас!</p>
-						<a href="{{$params->course_link}}" type="text" class="ad-btn share-link book-ico">ПОЛУЧИТЬ</a>
+						<a href="{{$params->course_link}}" type="text" class="ad-btn book-ico" style="background-color: {{$settings['course_button_color']}}">ПОЛУЧИТЬ</a>
 					</div>
 
 				</div> <!-- / row -->

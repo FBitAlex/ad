@@ -34,7 +34,7 @@
 					<td>{{$sub->email}}</td>
 					<td>{{$sub->self_referal}}</td>
 <!-- 					<td>{{$sub->parent_referal}}</td> -->
-					<td>{{$sub->confirm_link}}</td>
+					<td><a href="/confirm/{{$sub->confirm_link}}" target="_blank">{{$sub->confirm_link}}</a></td>
 					<td>{{$sub->created_at}}</td>
 				</tr>
 				@endforeach
