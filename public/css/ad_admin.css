@@ -45,6 +45,7 @@
 	height: 100px;
 }
 
-.fa.clear:before {
-    margin-left: 4px;
+.ad-del-testimonials-btn {
+    width: 100%;
+    margin-top: 8px;
 }

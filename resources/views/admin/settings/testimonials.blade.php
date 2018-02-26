@@ -39,12 +39,14 @@
 					<td>
 						<a href="testimonial/edit/{{$testimonial->id}}" class="btn btn-success" title="Редактировать">
 							<i class="fa fa-edit clear"></i>
+							Редактировать
 						</a>
 						<a 	href="testimonial/delete/{{$testimonial->id}}"
-							class="btn btn-danger"
-							title="Редактировать"
+							class="btn btn-danger ad-del-testimonials-btn"
+							title="Удалить"
 							onclick="return confirm('Вы действительно хотите удалить данный отзыв ?')">
 							<i class="fa fa-trash clear"></i>
+							Удалить
 						</a>
 
 					</td>
