@@ -6,7 +6,7 @@
 <div id="reg-node1" class="ad-fw-block" style="background-image: url(/img/settings/{{$settings['title_header_bg']}})">
 <div id="reg-node1-inner">
 	<div class="container">
-		<div class="ad-logo"></div>
+		<div class="ad-logo" style="background-image: url(/img/settings/{{$settings['project_logo']}})"></div>
 	
 <!-- 		<div class="row">
 			@if (Notify::all())
@@ -279,13 +279,13 @@
 		<div class="row">
 
 	        <div class="col col-md-4">
-				<p class="footer-title">Институт Консалтинга<br>и Социального Анализа<br>[ИКСА]</p>
-				<p class="footer-subtitle">Программы профессионального обучения</p>
+				<p class="footer-title">{!! $settings['footer_title'] !!}</p>
+				<p class="footer-subtitle">{!! $settings['footer_subtitle'] !!}</p>
 			</div>
 	        
 			<div class="col col-md-4 second">
 				<p class="footer-contacts-title">Контакты</p>
-				<p class="footer-contacts">Ватсап/Вайбер - 8 (913) 675 87 76<br>vaspronas@gmail.com<br>Скайп: vaspronas</p>
+				<p class="footer-contacts">{!! $settings['footer_contacts'] !!}</p>
 			</div>
 
 	    </div>  <!-- / .row -->
@@ -298,7 +298,8 @@
 <div id="reg-node5" class="ad-fw-block" style="background-color: {{$settings['bottom_bar_color']}}">
 	<div class="container">
 		<div class="row">
-			<p>&copy; ICSA Copyright. 2015-2018 All Rights Reserved</p>
+			<!-- <p>&copy; ICSA Copyright. 2015-2018 All Rights Reserved</p> -->
+			<p>{!! $settings['copyright_content'] !!}</p>
 	    </div>  <!-- / .row -->
 	</div> <!-- / .container -->
 </div> <!-- / #reg-node5 -->

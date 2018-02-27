@@ -14,7 +14,7 @@
 
 Route::get('/', 'HomeController@index');
 //Route::get('/{referal?}', 'HomeController@registerForm');
-//Route::post('/register', 'HomeController@register');
+Route::post('/register', 'HomeController@register');
 Route::get('/verify', 'HomeController@verify');
 // Route::get('/confirm', 'HomeController@beforeConfirm');
 Route::get('/confirm/{conflink}', 'HomeController@confirmEmailPage');
@@ -42,23 +42,26 @@ Route::get('/invite-mail', 'HomeController@sendInviteMail');
 // // 	Route::get('/logout', 'AuthController@logout');
 // });
 
+Route::group(['middleware' => 'auth'], function() {
+ 	Route::get('/logout', 'AuthController@logout');
+});
 
-//Route::group(['middleware' => 'guest'], function() {
-	Route::get('/reguser', 'AuthController@reguserForm');
-	Route::post('/reguser', 'AuthController@reguser');
 
-	Route::get('/login', 'AuthController@loginForm')->name('login');
+Route::group(['middleware' => 'guest'], function() {
+	// Route::get('/reguser', 'AuthController@reguserForm');
+	// Route::post('/reguser', 'AuthController@reguser');
+
+	Route::get('/login', 'AuthController@loginForm');
 	Route::post('/login', 'AuthController@login');
-//});
+});
 
 
 Route::group([
 		'prefix'=>'admin',
 		'namespace'=>'Admin',
-		//'middleware' => 'admin'
+		'middleware' => 'admin'
 	], function() {
-		// Route::get('/', 'DashboardController@index');
-//		Route::get('/', 'SettingsController@getProjectPage');
+		Route::get('/', 'SettingsController@getProjectPage');
 		Route::get('/project', 'SettingsController@getProjectPage');
 		Route::post('/project', 'SettingsController@setProject');
 		
@@ -68,8 +71,8 @@ Route::group([
 		Route::get('/background', 'SettingsController@getBackgroundPage');
 		Route::post('/background', 'SettingsController@setBackground');
 
-		Route::get('/content', 'SettingsController@getContentPage');
-		Route::post('/content', 'SettingsController@setContent');
+		// Route::get('/content', 'SettingsController@getContentPage');
+		// Route::post('/content', 'SettingsController@setContent');
 		
 		Route::get('/subscribers', 'SubsController@getList');
 		

@@ -26,6 +26,8 @@ class AuthController extends Controller {
 		return redirect('/login');
 	}
 
+
+
 	public function loginForm() {
 		return view('pages.login');
 	}
@@ -44,7 +46,7 @@ class AuthController extends Controller {
 		]);
 
 		if ($result) {
-			return redirect('/');
+			return redirect('/admin');
 		} 
 
 		return redirect()->back()->with('status', 'Wrong Login or Password !' );
@@ -52,6 +54,6 @@ class AuthController extends Controller {
 
 	public function logout() {
 		Auth::logout();
-		return redirect('/login');
+		return redirect('/');
 	}
 }

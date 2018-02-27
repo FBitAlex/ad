@@ -24,7 +24,7 @@
 						</ol>
 
 						<p class="ta-center">Получайте и изучайте прямо сейчас!</p>
-						<a href="{{$params->course_link}}" type="text" class="ad-btn book-ico" style="background-color: {{$settings['course_button_color']}}">ПОЛУЧИТЬ</a>
+						<a href="{{$settings['take_course_link']}}" type="text" class="ad-btn book-ico" style="background-color: {{$settings['course_button_color']}}">ПОЛУЧИТЬ</a>
 					</div>
 
 				</div> <!-- / row -->

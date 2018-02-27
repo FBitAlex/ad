@@ -12,17 +12,17 @@ $(document).ready(function() {
 $(document).ready(function(){
     var owl = $("#testimonial-slider");
     owl.owlCarousel({
-        items:1,
-        itemsDesktop:[1000,1],
-        itemsDesktopSmall:[979,1],
-        itemsTablet:[768,1],
-        pagination:false,
-        navigation:true,
-        navigationText:["",""],
-        slideSpeed:1000,
-        singleItem:true,
-        autoPlay:false,
+        items: 1,
+        itemsDesktop: [1000,1],
+        itemsDesktopSmall: [979,1],
+        itemsTablet: [768,1],
+        pagination: false,
+        navigation: true,
+        navigationText: ["",""],
+        slideSpeed: 1000,
+        singleItem: true,
         info: true,
+        autoPlay: 10000,
         afterAction : afterAction,
         afterInit: afterInit,
     });

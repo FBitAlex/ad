@@ -6,10 +6,10 @@
   <title>Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  	<link rel="icon" type="image/png" href="/img/favicon.png">
+	<link rel="icon" type="image/png" href="/img/favicon.png">
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/bootstrap-colorpicker.min.css">
-  	<link rel="stylesheet" href="/css/admin.css">
+	<link rel="stylesheet" href="/css/admin.css">
 
 <link rel="stylesheet" href="/css/ad_admin.css">
 
@@ -26,12 +26,12 @@
 
   <header class="main-header">
 	<!-- Logo -->
-	<a href="../../index2.html" class="logo">
+	<div class="logo">
 	  <!-- mini logo for sidebar mini 50x50 pixels -->
 	  <span class="logo-mini"><b>A</b></span>
 	  <!-- logo for regular state and mobile devices -->
 	  <span class="logo-lg"><b>Admin</b></span>
-	</a>
+	</div>
 	<!-- Header Navbar: style can be found in header.less -->
 	<nav class="navbar navbar-static-top">
 	  <!-- Sidebar toggle button-->
@@ -52,51 +52,53 @@
 	<section class="sidebar">
 
 	<ul class="sidebar-menu">
-        <li class="header">Меню</li>
+		<li class="header">Меню</li>
 
-        <li class="treeview">
-          <a href="project">
-            <i class="fa fa-product-hunt"></i>
-            <span>Параметры проекта</span>
-          </a>
-        </li>
-        
-        <li class="treeview">
-          <a href="color">
-            <i class="fa fa-paint-brush"></i>
-            <span>Цвета элементов</span>
-          </a>
-        </li>
+		<li class="treeview">
+		  <a href="/admin/project">
+			<i class="fa fa-product-hunt"></i>
+			<span>Параметры проекта</span>
+		  </a>
+		</li>
+		
+		<li class="treeview">
+		  <a href="/admin/color">
+			<i class="fa fa-paint-brush"></i>
+			<span>Цвета элементов</span>
+		  </a>
+		</li>
 
-        <li class="treeview">
-          <a href="background">
-            <i class="fa fa-image"></i>
-            <span>Фоновые изображения</span>
-          </a>
-        </li>
+		<li class="treeview">
+		  <a href="/admin/background">
+			<i class="fa fa-image"></i>
+			<span>Фоновые изображения</span>
+		  </a>
+		</li>
 
-        <li class="treeview">
-          <a href="content">
-            <i class="fa fa-font"></i>
-            <span>Текстовые блоки</span>
-          </a>
-        </li>
+		<li>
+			<a href="/admin/subscribers">
+				<i class="fa fa-users"></i>
+				<span>Подписчики</span>
+			</a>
+		</li>
 
-        <li>
-        	<a href="subscribers">
-        		<i class="fa fa-users"></i>
-        		<span>Подписчики</span>
-    	    </a>
-    	</li>
+		<li>
+			<a href="/admin/testimonials">
+				<i class="fa fa-comments"></i>
+				<span>Отзывы</span>
+			</a>
+		</li>
+		
+		<br><br><br>
+		
+		<li>
+			<a href="/logout">
+				<i class="fa fa-sign-out"></i>
+				<span>Выход</span>
+			</a>
+		</li>
 
-        <li>
-        	<a href="testimonials">
-        		<i class="fa fa-comments"></i>
-        		<span>Отзывы</span>
-    	    </a>
-    	</li>
-
-     </ul>
+	 </ul>
 
 	  <!-- @ include('admin._sidebar') -->
 	</section>
@@ -321,7 +323,7 @@
 		var editor = CKEDITOR.replaceAll();
 		CKFinder.setupCKEditor( editor );
   
-  		$('.colorpicker').colorpicker();
+		$('.colorpicker').colorpicker();
 
 	})
 

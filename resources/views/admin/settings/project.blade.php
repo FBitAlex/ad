@@ -17,13 +17,14 @@
 
 			@foreach ($params as $param)
 				<div class="row">
-					<div class="form-group col col-md-4">
+					<div class="form-group col col-md-5">
 						<label for="{{$param->name}}">{{$param->desc}}</label>
 						<input type="{{$param->type}}" class="form-control" id="name" name="{{$param->name}}" value="{{$param->value}}">
+					</div>
 				</div>
-			</div>
 			@endforeach
-			<div class="form-group col-2 col-md-4">
+			
+			<div class="form-group col col-md-5">
 				<input type="submit" class="btn btn-success" value="Сохранить">
 			</div>
 

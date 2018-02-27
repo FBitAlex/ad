@@ -95,18 +95,18 @@ class HomeController extends Controller {
 		$user = Subs::getUserByConfirmLink( $conflink );
 		$count_invite = Subs::getCountReferalUser( $conflink );
 		
-		$params = Project::getProjectParams( 'astro' );
-		
+		$invite_cnt = Settings::getParamValByName( 'invite_cnt' );
+	
 		$share_links = \Share::load('http://www.google/com', 'Курс по астрологии')->services('facebook', 'vk', 'twitter');
 		 
-		if ( $count_invite < $params->need_cnt_invite ) {
+		if ( $count_invite < $invite_cnt ) {
 			$active_step = "active2";
 			$settings = Settings::getParamBypage('confirm');
 			return view( 'pages.confirm', compact('user', 'count_invite', 'share_links', 'active_step', 'settings') );
 		} else {
 			$active_step = "active3";
 			$settings = Settings::getParamBypage('course');
-			return view( 'pages.course', compact('params', 'share_links', 'active_step', 'settings') );
+			return view( 'pages.course', compact('share_links', 'active_step', 'settings') );
 		}
 	}
 	

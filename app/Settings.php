@@ -12,8 +12,9 @@ class Settings extends Model {
 		return self::all();
 	}
 
-	public static function getParamByName( $name ) {
-		return self::where('name', $name)->get();
+	public static function getParamValByName( $name ) {
+		$param = self::where('name', $name)->select('value')->get()->toArray();
+		return $param[0]['value'];
 	}
 
 	public static function getParamByGroup( $group ) {

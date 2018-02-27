@@ -15,7 +15,8 @@ class Subs extends Model {
 
 	public static function add( $fields ) {
 		$user = new static;
-		$user->fill( $fields );
+		$user->name = $fields['name'];
+		$user->email = $fields['email'];
 		$user->self_referal = str_random(8);
 		$user->confirm_link = str_random(16);
 		if (self::getUserByReferal($fields['referal'])) {
