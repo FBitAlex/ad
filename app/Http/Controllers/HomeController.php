@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Subs;
 use App\Category;
-use App\Project;
+//use App\Project;
 use App\Testimonials;
 use App\Settings;
 
@@ -19,7 +19,7 @@ class HomeController extends Controller {
 	
 	public static function index( $referal = null ) {
 		$testimonials = Testimonials::getList();
-		$settings = Settings::getParamBypage('title');
+		$settings = Settings::getParamByPage('title');
 		//dd($settings);
 		$is_reg = 0;
 		return view( 'pages.register', compact('home_content', 'home_video', 'referal', 'share_links', 'is_reg', 'testimonials', 'settings') );
@@ -44,10 +44,11 @@ class HomeController extends Controller {
 		
 		if ( $request->referal != null && $user != null ) {
 			
-			$params = Project::getProjectParams( 'astro' );
+			//$params = Project::getProjectParams( 'astro' );
+			$invite_cnt = Settings::getParamValByName( 'invite_cnt' );
 			$currentInvited = Subs::getCountReferal( $request->referal );
 
-			if  ( $params->need_cnt_invite <= $currentInvited ) { // if enouth, then send letter about open course for download
+			if  ( $invite_cnt <= $currentInvited ) { // if enouth, then send letter about open course for download
 				if (!$user->is_send) {
 					\Mail::to($user)->send(new OpenCourseMail( $user ));
 					$user->is_send = 1;
@@ -55,7 +56,7 @@ class HomeController extends Controller {
 				}
 
 			} else if (!$user->is_send) { // if not enouth, then send letter about one more frend invite
-				\Mail::to($user)->send(new OneMoreReferalMail( $currentInvited,  $params->need_cnt_invite ));
+				\Mail::to($user)->send(new OneMoreReferalMail( $currentInvited,  $invite_cnt ));
 			}
 		}
 
@@ -95,8 +96,8 @@ class HomeController extends Controller {
 
 		$user = Subs::getUserByConfirmLink( $conflink );
 		$count_invite = Subs::getCountReferalUser( $conflink );
-		
-		if ( $count_invite == null ) return redirect('/');
+
+		if ( $count_invite === null ) return redirect('/');
 
 		$invite_cnt = Settings::getParamValByName( 'invite_cnt' );
 	

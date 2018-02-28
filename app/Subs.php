@@ -36,7 +36,8 @@ class Subs extends Model {
 
 	public static function getCountReferalUser( $conflink ) {
 		$user = self::where('confirm_link', $conflink)->first();
-		return ($user != null ) ? self::where('parent_referal', $user->self_referal)->count() : null;
+		if  ($user === null ) return null;
+		return self::where('parent_referal', $user->self_referal)->count();
 	}
 
 	public static function getCountReferal( $referal ) {

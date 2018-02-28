@@ -12,9 +12,9 @@
 */
 
 
-Route::get('/', 'HomeController@index');
+//Route::get('/', 'HomeController@index');
 //Route::get('/{referal?}', 'HomeController@registerForm');
-Route::get('/register', 'HomeController@index');
+Route::get('/{referal?}', 'HomeController@index');
 Route::post('/register', 'HomeController@register');
 //Route::get('/verify', 'HomeController@verify');
 // Route::get('/confirm', 'HomeController@beforeConfirm');
