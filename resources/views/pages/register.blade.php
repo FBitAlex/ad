@@ -65,7 +65,7 @@
 			<!-- video block -->
 			<div class="col-12 col-lg-7">
 				<div class="video-block">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/KRj2zz5_828?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					{!! $settings['title_video'] !!}
 				</div>
 			</div>
 

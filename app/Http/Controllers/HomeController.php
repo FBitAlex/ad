@@ -26,6 +26,7 @@ class HomeController extends Controller {
 	}
 
 	public function register( Request $request ) {
+		//dd($request);
 		$this->validate($request, [
 			'name' 		=> 'required',
 			'email' 	=> 'required|email|unique:users',
@@ -89,12 +90,14 @@ class HomeController extends Controller {
 	public function confirmEmailPage( $conflink ) {
 		
 		if ( $conflink == null ) {
-			return redirect('/');	
+			return redirect('/');
 		}
 
 		$user = Subs::getUserByConfirmLink( $conflink );
 		$count_invite = Subs::getCountReferalUser( $conflink );
 		
+		if ( $count_invite == null ) return redirect('/');
+
 		$invite_cnt = Settings::getParamValByName( 'invite_cnt' );
 	
 		$share_links = \Share::load('http://www.google/com', 'Курс по астрологии')->services('facebook', 'vk', 'twitter');
@@ -110,17 +113,17 @@ class HomeController extends Controller {
 		}
 	}
 	
-	public function verify() {
-		$active_step = "active2";
-		$settings = Settings::getParamBypage('verify');
-		// return view( 'pages.verify', [
-		// 	'email'			=> 'user email',
-		// 	'active_step' 	=> "active1",
-		// 	'settings'		=> $settings
-		// ]);
+	// public function verify() {
+	// 	$active_step = "active2";
+	// 	$settings = Settings::getParamBypage('verify');
+	// 	// return view( 'pages.verify', [
+	// 	// 	'email'			=> 'user email',
+	// 	// 	'active_step' 	=> "active1",
+	// 	// 	'settings'		=> $settings
+	// 	// ]);
 
-		return view( 'pages.verify', compact('settings', 'active_step') );
-	}
+	// 	return view( 'pages.verify', compact('settings', 'active_step') );
+	// }
 
 	// public function confirmEmail( $conflink ) {
 	// 	if ( $conflink != null ) {

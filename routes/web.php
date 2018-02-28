@@ -14,8 +14,9 @@
 
 Route::get('/', 'HomeController@index');
 //Route::get('/{referal?}', 'HomeController@registerForm');
+Route::get('/register', 'HomeController@index');
 Route::post('/register', 'HomeController@register');
-Route::get('/verify', 'HomeController@verify');
+//Route::get('/verify', 'HomeController@verify');
 // Route::get('/confirm', 'HomeController@beforeConfirm');
 Route::get('/confirm/{conflink}', 'HomeController@confirmEmailPage');
 Route::get('/send-mail', 'HomeController@sendConfirmMail');

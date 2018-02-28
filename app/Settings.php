@@ -18,7 +18,7 @@ class Settings extends Model {
 	}
 
 	public static function getParamByGroup( $group ) {
-		return self::where('group', $group)->get();
+		return self::where('group', $group)->orderBy('order')->get();
 	}
 
 	public static function getParamByPage( $page ) {
